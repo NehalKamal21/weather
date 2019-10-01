@@ -1,5 +1,5 @@
 import React from 'react'
-import Graph from '../components/Graph'
+import Graph from '../Components/Graph'
 
 
 // to be substituted with live data;

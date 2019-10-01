@@ -14,9 +14,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    color: grey;
 }
 
 .WeatherContainer {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
+}
+
+.Dayscontainer {
+    display: flex;
 }
