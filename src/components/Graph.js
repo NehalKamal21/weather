@@ -8,7 +8,7 @@ import { extent, max } from "d3-array";
 
 const Graph = ({rawData}) => {
     
-const data = rawData.list.map(d => ({ x: d.dt, y: d.main.temp }));
+const data = rawData? rawData.map(d => ({ x: d.dt, y: d.main.temp })):[];
 
 const width = 750;
 const height = 400;
