@@ -1,35 +1,51 @@
 import React, { useEffect, useState } from 'react';
+import API from '../api/index';
+import '../Components/ComponentStyle.css';
 import DayComponent from '../Components/DayComponent';
-import api from '../api/index';
-import '../Components/ComponentStyle.css'
-import Graph from '../Components/Graph'
-
-const Home = () => {
+import _ from 'lodash';
+const Home = (props) => {
     const [Data, SetData] = useState([]);
-    const [allData, setAllData] = useState([]);
+    const [groupedData, setGroupedData] = useState({});
     useEffect(() => {
-        api.get().then(function (response) {
-            setAllData(response.data.list);
-            for (var i = 0; i < response.data.list.length; i += 8) {
-                // eslint-disable-next-line
-                SetData(Data => [...Data, response.data.list[i]])
-            }
+        API('/forecast', 'q=Cairo&&units=metric').get().then(function (response) {
+            response.data.list.map(item => {
+                item.date = item.dt_txt.slice(0, 10);
+                return item;
+            })
+            setGroupedData(Data=>_.groupBy(response.data.list, 'date'))
+            
+            response.data.list.map((item, i) => {
+                if (i % 8 === 0) {
+                    SetData(Data => [...Data, item])
+                }
+                return item;
+            })
+
         }).catch(function (error) {
             console.log(error);
         })
         // eslint-disable-next-line
-    }, [])
-    return (<div className='WeatherContainer'>
+    }, []);
+    const NavigateTo = (day) => {
+        debugger
+        const { history } = props;
+        if (day.dt) {
+            history.push({
+                pathname: '/' + day.dt,
+                state: { Data: groupedData[day.date] }
+            });
+        }
 
-        {Data && <Graph rawData={Data} />}
+    }
+    return (<div className='WeatherContainer'>
         <div className='Dayscontainer'>
             {Data && Data.map((item, i) => {
                 return (
-                    <DayComponent key={i} imgSrc="http://openweathermap.org/img/wn/10d@2x.png" allData={allData} response={item} />
+                    <DayComponent key={i} response={item} NavigateTo={NavigateTo} />
                 )
-
             })}
         </div>
+
     </div>
     )
 
