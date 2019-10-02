@@ -4,13 +4,15 @@ import './ComponentStyle.css';
 
 const DayComponent = (props) => {
     let weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-    const NavigateTo=(day) =>{
-      props.NavigateTo(day)
+    const NavigateTo = (day) => {
+        if (props.NavigateTo) {
+            props.NavigateTo(day)
+        }
     }
     return (
         <div className='dayContainer'>
             {props.response &&
-                <button className='day' onClick={NavigateTo.bind(this,props.response)}>
+                <button className='day' onClick={NavigateTo.bind(this, props.response)}>
                     <div>
                         {props.response && weekDays[new Date(props.response.dt_txt).getDay()]}
                     </div>
@@ -26,5 +28,5 @@ const DayComponent = (props) => {
 
     )
 }
-    
+
 export default DayComponent;

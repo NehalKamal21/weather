@@ -12,8 +12,8 @@ const Home = (props) => {
                 item.date = item.dt_txt.slice(0, 10);
                 return item;
             })
-            setGroupedData(Data=>_.groupBy(response.data.list, 'date'))
-            
+            setGroupedData(Data => _.groupBy(response.data.list, 'date'))
+
             response.data.list.map((item, i) => {
                 if (i % 8 === 0) {
                     SetData(Data => [...Data, item])
@@ -32,7 +32,7 @@ const Home = (props) => {
         if (day.dt) {
             history.push({
                 pathname: '/' + day.dt,
-                state: { Data: groupedData[day.date] }
+                state: { Day: day, Data: groupedData[day.date] }
             });
         }
 
