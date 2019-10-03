@@ -27,7 +27,6 @@ const Home = (props) => {
         // eslint-disable-next-line
     }, []);
     const NavigateTo = (day) => {
-        debugger
         const { history } = props;
         if (day.dt) {
             history.push({
