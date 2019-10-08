@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Graph from '../Components/Graph';
-import DayComponent from '../Components/DayComponent'
+import '../Components/ComponentStyle.css';
 
 // to be substituted with live data;
 // const rawData = {
@@ -31,6 +31,7 @@ import DayComponent from '../Components/DayComponent'
 //     }
 //   ],
 // };
+const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
 const DayDetails = (props) => {
   const [Data, SetData] = useState([]);
@@ -41,9 +42,49 @@ const DayDetails = (props) => {
     // eslint-disable-next-line
   }, [])
   return (
-    <div>
+    <div className='details'>
       {Data && <Graph rawData={Data} />}
-      {day && <DayComponent key={day.dt} response={day} />}
+      {day &&
+        <div className='details-card'>
+          <div className='card-details'>
+            <div className='day-info'>
+              <div>
+                {day && weekDays[new Date(day.dt_txt).getDay()]}
+              </div>
+              <div>
+                {day && day.date}
+              </div>
+            </div>
+            <div className='day-details'>
+              <div>
+                <img className='img' src={'http://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png'} alt="weatherImage" />
+
+              </div>
+              <div className='degree'>
+                {Math.floor(day.main['temp_min'])}
+                <span> &deg;C</span>
+              </div>
+            </div>
+            <div className='weather-desc'>
+              {day.weather[0].description}
+            </div>
+          </div>
+          <div className='card-details card-data'>
+            <div>
+              Humidity:  {day.main.humidity + '%'}
+            </div>
+            <div>
+              Wind Speed: {day.wind.speed} Degree: {day.wind.deg}
+            </div>
+            <div>
+              See Level: {day.main.sea_level}
+            </div>
+            <div>
+              Pressure: {day.main.pressure}
+            </div>
+          </div>
+        </div>
+      }
     </div>
     // <Graph rawData={rawData} />
   )

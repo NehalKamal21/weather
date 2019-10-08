@@ -38,6 +38,24 @@ const Home = (props) => {
     }
     return (<div className='WeatherContainer'>
         <div className='Dayscontainer'>
+
+            <div className='header'>
+                <div className='day-info'>
+                    Day
+                </div>
+                <div className='weather-icon'>
+                    Weather Icon
+                    </div>
+                <div className='desc'>
+                    Description
+                    </div>
+                <div className='weather'>
+                    High/Low
+                    </div>
+                <div className='humidity'>
+                    Humidity
+                </div>
+            </div>
             {Data && Data.map((item, i) => {
                 return (
                     <DayComponent key={i} response={item} NavigateTo={NavigateTo} />

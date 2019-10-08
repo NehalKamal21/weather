@@ -1,13 +1,13 @@
 .dayContainer {
-    padding: 10px;
+    /* padding: 10px; */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
 }
 
 .day {
@@ -22,11 +22,98 @@
 
 .WeatherContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-around;
 }
 
 .Dayscontainer {
     display: flex;
     margin-left: 50px;
+    flex-direction: column;
+}
+
+.day-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    /* border: 1px solid #eee; */
+    /* padding: 0 20px */
+}
+
+.day-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 82px;
+    width: 85px;
+    align-items: flex-start;
+}
+
+.desc {
+    width: 150px;
+}
+
+.weather {
+    width: 100px
+}
+
+.humidity {
+    width: 85px;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    padding: 10px 20px;
+    border: 1px solid #eee;
+    margin-top: 20px;
+}
+
+.weather-icon {
+    width: 130px;
+}
+
+.day-btn {
+    padding: 0 20px;
+    background: transparent;
+    border: 1px solid #eee;
+    cursor: pointer;
+}
+
+.details-card {
+    margin: 0 70px;
+    border: 1px solid #eee;
+    z-index: 1000;
+    box-shadow: 1px 1px #eee;
+    width: 600px;
+    display: flex;
+}
+
+.degree {
+    font-size: 30px;
+}
+
+.weather-desc {
+    font-size: 12px;
+}
+
+.card-details {
+    flex: 1;
+    padding: 10px 20px;
+}
+
+.card-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-left: 1px solid #eee;
+    background: #eeeeee47;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
