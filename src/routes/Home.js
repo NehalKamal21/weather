@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import API from '../api/index';
-import '../Components/ComponentStyle.css';
-import DayComponent from '../Components/DayComponent';
+import '../components/ComponentStyle.css';
+import DayComponent from '../components/DayComponent';
 import _ from 'lodash';
 const Home = (props) => {
     const [Data, SetData] = useState([]);

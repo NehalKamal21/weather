@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Graph from '../Components/Graph';
-import '../Components/ComponentStyle.css';
+import Graph from '../components/Graph';
+import '../components/ComponentStyle.css';
 
 // to be substituted with live data;
 // const rawData = {
