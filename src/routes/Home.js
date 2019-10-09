@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import API from '../api/index';
-import '../Components/ComponentStyle.css';
-import DayComponent from '../Components/DayComponent';
+import '../components/ComponentStyle.css';
+import DayComponent from '../components/DayComponent';
 import _ from 'lodash';
 const Home = (props) => {
     const [Data, SetData] = useState([]);
@@ -38,6 +38,24 @@ const Home = (props) => {
     }
     return (<div className='WeatherContainer'>
         <div className='Dayscontainer'>
+
+            <div className='header'>
+                <div className='day-info'>
+                    Day
+                </div>
+                <div className='weather-icon'>
+                    Weather Icon
+                    </div>
+                <div className='desc'>
+                    Description
+                    </div>
+                <div className='weather'>
+                    High/Low
+                    </div>
+                <div className='humidity'>
+                    Humidity
+                </div>
+            </div>
             {Data && Data.map((item, i) => {
                 return (
                     <DayComponent key={i} response={item} NavigateTo={NavigateTo} />
