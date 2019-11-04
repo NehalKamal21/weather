@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import API from '../api/index';
 import '../components/ComponentStyle.css';
 import DayComponent from '../components/DayComponent';
 import _ from 'lodash';
+import { getWeatherApiCall } from '../api/apiCalls/weatherApiCalls';
 const Home = (props) => {
     const [Data, SetData] = useState([]);
     const [groupedData, setGroupedData] = useState({});
+    const { history } = props;
+
     useEffect(() => {
-        API('/forecast', 'q=Cairo&&units=metric').get().then(function (response) {
+        getWeatherApiCall({
+            q: 'Cairo',
+            units: 'metric'
+        }).then(function (response) {
             response.data.list.map((item, i) => {
                 if (i % 8 === 0) {
                     SetData(Data => [...Data, item])
@@ -25,7 +30,6 @@ const Home = (props) => {
         // eslint-disable-next-line
     }, []);
     const NavigateTo = (day) => {
-        const { history } = props;
         if (day.dt) {
             history.push({
                 pathname: '/' + day.dt,
